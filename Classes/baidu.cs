@@ -19,10 +19,11 @@ namespace ITSRV
     public class baidu
     {
         // for official usage : Please refresh token every 24 hours, and save it in application envirable, do not use getAccessToken() in each call. 
-        public string getAccesstoken()
+        public string getAccesstoken() //get access token from Baidu AI
         {
             string apikey = "CCxYUHCLKRvZ4trcnGjwYg6B";
             string secretkey = "c6YMA1Lp9aULLahG8mkqSrU7evk6rFaO";
+            
             string tokenurl = "https://aip.baidubce.com/oauth/2.0/token";
             tokenurl += "?grant_type=client_credentials&client_id=" + apikey + "&client_secret=" + secretkey;
             // clientid -> apikey
@@ -38,7 +39,7 @@ namespace ITSRV
             return accesstoken;
         }
 
-        public string voicetotext(string str64, int len)
+        public string voicetotext(string str64, int len) //convert voice base64 string to text
         {
             //gettoken();
             string token = getAccesstoken(); 
