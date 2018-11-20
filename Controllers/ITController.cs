@@ -29,7 +29,7 @@ namespace ITSRV.Controllers
 
         // POST: api/IT
         [HttpPost]
-        public string Post(string type)
+        public string Post(string type) //type =1 : Voice , Type!=1 : Text
         {
             string str64;
             string question = "";
@@ -40,11 +40,11 @@ namespace ITSRV.Controllers
             tuling tl = new tuling();
 
                 var reader = new StreamReader(Request.Body);
-                str64 = reader.ReadToEnd();
-                JObject ser = JObject.Parse(str64);
+                str64 = reader.ReadToEnd();        //get request body
+                JObject ser = JObject.Parse(str64);  
                 reader.Close();
-                string b64 = ser["b64"].ToString();
-                string len = ser["len"].ToString();
+                string b64 = ser["b64"].ToString();    //get voice string as base64 format.
+                string len = ser["len"].ToString();    //get length of original voice 
                 if (b64 != "")
                 {
                     if (type == "1") //1-> Voice
